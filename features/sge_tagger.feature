@@ -23,3 +23,11 @@ Feature: Tag SGE owned files
     """
     When I successfully run `sge_tagger tmp`
     Then the file "tmp/sge_owned.txt" should be text-tagged
+
+  Scenario: untagged ruby file
+    Given a file named "tmp/sge_owned.rb" with:
+    """
+    owned by SGE
+    """
+    When I successfully run `sge_tagger tmp`
+    Then the file "tmp/sge_owned.rb" should be ruby-tagged
