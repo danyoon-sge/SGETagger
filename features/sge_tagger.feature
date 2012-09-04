@@ -10,7 +10,8 @@ Feature: Tag SGE owned files
     And there should be a one line summary of what the app does
     And the banner should include the version
     And the banner should document that this app takes options
-    And the banner should document that this app takes no arguments
     And the following options should be documented:
       |--version|
       |--log-level|
+    And the banner should document that this app's arguments are:
+      | repo_url | which is required |

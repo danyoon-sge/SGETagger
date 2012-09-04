@@ -29,9 +29,10 @@ class App
   #
   # Or, just call OptionParser methods on opts
   #
+ 
   # Require an argument
-  # arg :some_arg 
-  #
+  arg :repo_url
+
   # # Make an argument optional
   # arg :optional_arg, :optional
 
