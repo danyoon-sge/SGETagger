@@ -1,0 +1,19 @@
+= disney_tagger - Tags SGE owned files with legal info in Disney projects.
+
+Author::  DANIEL YOON (DANIEL.YOON@SLEEPYGIANT.COM)
+Copyright:: Copyright (c) 2012 DANIEL YOON
+
+
+Tags SGE owned files with legal info in Disney projects.
+
+== Links
+
+* {Source on Github}[LINK TO GITHUB]
+* RDoc[LINK TO RDOC.INFO]
+
+== Install
+
+== Examples
+
+== Contributing
+
