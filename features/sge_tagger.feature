@@ -15,3 +15,8 @@ Feature: Tag SGE owned files
       |--log-level|
     And the banner should document that this app's arguments are:
       | file_dir | which is required |
+
+  Scenario: Happy Path
+    Given a directory with SGE owned files at "tmp"
+    When I successfully run `sge_tagger tmp`
+    Then SGE owned files at "tmp" should be tagged with legal info

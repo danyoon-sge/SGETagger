@@ -3,7 +3,6 @@
 require 'optparse'
 require 'methadone'
 require 'sge_tagger'
-require 'fileutils'
 
 class App
   include Methadone::Main
@@ -15,8 +14,8 @@ class App
       Dir["**/*"].each do |rfile|
         og_text = File.read(rfile)
         File.open(rfile, 'w') do |wfile|
-          wfile << "some legal stuff\n"
-          wfile << og_text
+          wfile.puts SGETagger::LEGAL_INFO
+          wfile.puts og_text
         end
       end
     end
