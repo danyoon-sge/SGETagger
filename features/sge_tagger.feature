@@ -14,7 +14,7 @@ Feature: Tag SGE owned files
       |--version|
       |--log-level|
     And the banner should document that this app's arguments are:
-      | repo_url | which is required |
+      | file_dir | which is required |
 
   Scenario: Happy Path
     Given a git repo with some SGE owned files at "/tmp/sge_owned_files.git"

@@ -8,10 +8,7 @@ class App
   include Methadone::Main
   include Methadone::CLILogging
 
-  main do # Add args you want: |like,so|
-    # your program code here
-    # You can access CLI options via
-    # the options Hash
+  main do |file_dir|
   end
 
   # supplemental methods here
@@ -31,7 +28,7 @@ class App
   #
  
   # Require an argument
-  arg :repo_url
+  arg :file_dir
 
   # # Make an argument optional
   # arg :optional_arg, :optional
