@@ -10,14 +10,19 @@ class App
   include Methadone::SH
 
   main do |file_dir|
-    Dir.chdir(file_dir) do
-      Dir["**/*"].each do |rfile|
-        SGETagger.tag_legal(rfile)
-      end
+    taggable_files(file_dir) do |rfile|
+      SGETagger.tag_legal(rfile)
     end
   end
 
-  # supplemental methods here
+  # supplemental methods
+  def self.taggable_files(file_dir)
+    Dir.chdir(file_dir) do
+      Dir["**/*"].each do |rfile|
+        yield rfile
+      end
+    end
+  end
 
   # Declare command-line interface here
 
