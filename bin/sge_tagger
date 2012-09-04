@@ -11,7 +11,7 @@ class App
 
   main do |file_dir|
     taggable_files(file_dir) do |rfile|
-      SGETagger.tag_legal(rfile)
+      SGETagger.tag_file(rfile)
     end
   end
 
