@@ -8,25 +8,13 @@ class App
   include Methadone::Main
   include Methadone::CLILogging
   include Methadone::SH
+  include SGETagger
 
   main do |file_dir|
     Dir.chdir(file_dir) do
       Dir["**/*"].each do |rfile|
         og_text = File.read(rfile)
-
-
-        File.open(rfile, 'w') do |wfile|
-          legal_text = SGETagger::LEGAL_INFO
-
-          case File.extname(rfile)
-          when '.rb'
-            legal_text.insert(0, "=begin\n")
-            legal_text << "=end\n"
-          end
-
-          wfile.puts legal_text
-          wfile.puts og_text
-        end
+        LegalWriter.tag_legal(rfile, og_text)
       end
     end
   end
