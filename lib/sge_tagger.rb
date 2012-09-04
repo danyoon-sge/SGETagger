@@ -19,7 +19,7 @@ Confidential information of Sleepy Giant Entertainment, Inc.
   end
 
   def self.tag_text(og_text, file_type)
-    tagged_text = LEGAL_INFO
+    tagged_text = LEGAL_INFO.clone
 
     case file_type
     when '.rb'
