@@ -13,7 +13,7 @@ class App
   main do |file_dir|
     Dir.chdir(file_dir) do
       Dir["**/*"].each do |rfile|
-        LegalWriter.tag_legal(rfile)
+        SGETagger.tag_legal(rfile)
       end
     end
   end
