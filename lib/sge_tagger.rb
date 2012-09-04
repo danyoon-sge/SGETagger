@@ -19,6 +19,8 @@ Confidential information of Sleepy Giant Entertainment, Inc.
   end
 
   def self.tag_text(og_text, file_type)
+    return og_text.clone if og_text.include?(LEGAL_INFO)
+
     tagged_text = LEGAL_INFO.clone
 
     case file_type
