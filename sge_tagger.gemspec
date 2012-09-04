@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'disney_tagger/version'
+require 'sge_tagger/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "disney_tagger"
-  gem.version       = DisneyTagger::VERSION
+  gem.name          = "sge_tagger"
+  gem.version       = SGETagger::VERSION
   gem.authors       = ["Daniel"]
   gem.email         = ["robotright@gmail.com"]
   gem.description   = %q{TODO: Write a gem description}

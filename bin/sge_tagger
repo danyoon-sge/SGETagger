@@ -2,7 +2,7 @@
 
 require 'optparse'
 require 'methadone'
-require 'disney_tagger'
+require 'sge_tagger'
 
 class App
   include Methadone::Main
@@ -18,7 +18,7 @@ class App
 
   # Declare command-line interface here
 
-  # description "one line description of your app"
+  description "Tag SGE owned files with legal info"
   #
   # Accept flags via:
   # on("--flag VAL","Some flag")
@@ -35,7 +35,7 @@ class App
   # # Make an argument optional
   # arg :optional_arg, :optional
 
-  version DisneyTagger::VERSION
+  version SGETagger::VERSION
 
   use_log_level_option
 

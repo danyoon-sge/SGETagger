@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    disney_tagger (0.0.1)
+    sge_tagger (0.0.1)
       methadone (~> 1.2.1)
 
 GEM
@@ -44,6 +44,6 @@ PLATFORMS
 
 DEPENDENCIES
   aruba
-  disney_tagger!
   rake (~> 0.9.2)
   rdoc
+  sge_tagger!
