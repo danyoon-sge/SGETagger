@@ -3,12 +3,23 @@
 require 'optparse'
 require 'methadone'
 require 'sge_tagger'
+require 'fileutils'
 
 class App
   include Methadone::Main
   include Methadone::CLILogging
+  include Methadone::SH
 
   main do |file_dir|
+    Dir.chdir(file_dir) do
+      Dir["**/*"].each do |rfile|
+        og_text = File.read(rfile)
+        File.open(rfile, 'w') do |wfile|
+          wfile << "some legal stuff\n"
+          wfile << og_text
+        end
+      end
+    end
   end
 
   # supplemental methods here
