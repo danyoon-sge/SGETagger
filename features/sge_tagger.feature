@@ -15,3 +15,8 @@ Feature: Tag SGE owned files
       |--log-level|
     And the banner should document that this app's arguments are:
       | repo_url | which is required |
+
+  Scenario: Happy Path
+    Given a git repo with some SGE owned files at "/tmp/sge_owned_files.git"
+    When I successfully run `sge_tagger file:///tmp/sge_owned_files.git`
+    Then SGE owned files at "/tmp/sge_owned_files.git" should be tagged with legal info
