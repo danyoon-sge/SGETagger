@@ -16,7 +16,7 @@ Feature: Tag SGE owned files
     And the banner should document that this app's arguments are:
       | file_dir | which is required |
 
-  Scenario: untagged text file
+  Scenario: tags untagged text file
     Given a file named "tmp/sge_owned.txt" with:
     """
     owned by SGE
@@ -24,7 +24,7 @@ Feature: Tag SGE owned files
     When I successfully run `sge_tagger tmp`
     Then the file "tmp/sge_owned.txt" should be text-tagged
 
-  Scenario: untagged ruby file
+  Scenario: tags untagged ruby file
     Given a file named "tmp/sge_owned.rb" with:
     """
     owned by SGE
