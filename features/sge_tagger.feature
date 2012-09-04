@@ -17,6 +17,7 @@ Feature: Tag SGE owned files
       | file_dir | which is required |
 
   Scenario: Happy Path
-    Given a git repo with some SGE owned files at "/tmp/sge_owned_files.git"
-    When I successfully run `sge_tagger file:///tmp/sge_owned_files.git`
-    Then SGE owned files at "/tmp/sge_owned_files.git" should be tagged with legal info
+    Given a directory with some SGE owned files at "tmp"
+    When I successfully run `sge_tagger tmp`
+    Then SGE owned files at "tmp" should be tagged with legal info
+    #And summary info should be displayed
