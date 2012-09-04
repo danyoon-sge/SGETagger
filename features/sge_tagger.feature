@@ -16,7 +16,10 @@ Feature: Tag SGE owned files
     And the banner should document that this app's arguments are:
       | file_dir | which is required |
 
-  Scenario: Happy Path
-    Given a directory with SGE owned files at "tmp"
+  Scenario: untagged ruby file
+    Given a file named "tmp/sge_owned.rb" with:
+    """
+    owned by SGE
+    """
     When I successfully run `sge_tagger tmp`
-    Then SGE owned files at "tmp" should be tagged with legal info
+    Then the file "tmp/sge_owned.rb" should contain "Confidential information"

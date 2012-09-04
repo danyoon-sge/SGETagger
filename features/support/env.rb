@@ -10,8 +10,6 @@ Before do
   # Using "announce" causes massive warnings on 1.9.2
   @puts = true
   @original_rubylib = ENV['RUBYLIB']
-  # prevent aruba from changing dir for file operations
-  @dirs = '.'
   ENV['RUBYLIB'] = LIB_DIR + File::PATH_SEPARATOR + ENV['RUBYLIB'].to_s
 end
 
