@@ -22,4 +22,4 @@ Feature: Tag SGE owned files
     owned by SGE
     """
     When I successfully run `sge_tagger tmp`
-    Then the file "tmp/sge_owned.rb" should contain "Confidential information"
+    Then the file "tmp/sge_owned.rb" should be tagged
