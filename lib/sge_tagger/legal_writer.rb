@@ -4,7 +4,9 @@ module SGETagger
     include Methadone::CLILogging
     include Methadone::SH
 
-    def self.tag_legal(rfile, og_text)
+    def self.tag_legal(rfile)
+      og_text = File.read(rfile)
+
       File.open(rfile, 'w') do |wfile|
         legal_text = SGETagger::LEGAL_INFO
 

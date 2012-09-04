@@ -13,8 +13,7 @@ class App
   main do |file_dir|
     Dir.chdir(file_dir) do
       Dir["**/*"].each do |rfile|
-        og_text = File.read(rfile)
-        LegalWriter.tag_legal(rfile, og_text)
+        LegalWriter.tag_legal(rfile)
       end
     end
   end
