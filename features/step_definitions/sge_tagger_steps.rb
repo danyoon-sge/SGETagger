@@ -1,15 +1,11 @@
-# encoding: utf-8
 require 'pry'
+require 'sge_tagger'
+
 include FileUtils
 
 FILES =  %w[sge.sass sge.less sge.css sge.html sge.html.haml sge.html.erb]
 FILES += %w[sge.rb sge.js]
 FILES.uniq!
-
-LEGAL_INFO = <<eot
-Confidential information of Sleepy Giant Entertainment, Inc.
-© Sleepy Giant Entertainment, Inc.
-eot
 
 Given /^a git repo with some SGE owned files at "(.*?)"$/ do |repo_dir|
   @repo_dir = repo_dir
@@ -34,7 +30,11 @@ Then /^SGE owned files at "(.*?)" should be tagged with legal info$/ do |repo_di
   Dir.chdir repo_dir do
     FILES.each do |file|
       text = File.read(file)
-      text.index(LEGAL_INFO).should == 0
+      text.index(SGETagger::LEGAL_INFO).should == 0
     end
   end
+end
+
+Then /^summary info should be displayed$/ do
+  pending # express the regexp above with the code you wish you had
 end
