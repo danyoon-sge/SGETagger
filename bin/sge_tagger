@@ -48,7 +48,7 @@ class App
   #
  
   # Require an argument
-  arg :file_dir
+  arg :file_dir, "dir containing files to tag with legal info"
 
   # # Make an argument optional
   # arg :optional_arg, :optional
