@@ -4,6 +4,8 @@ include SGETagger
 
 describe Tagger do
   before(:each) do
+    # make a dir containing one file and one dir
+    FileUtils.rm_rf("tmp")
     Dir.mkdir "tmp"
     Dir.chdir "tmp" do
       FileUtils.rm_rf("level_one")
