@@ -2,6 +2,12 @@ module SGETagger
   class Tagger
     attr_reader :new_count, :prev_count, :ignored_count
 
+    def initialize
+      @new_count = 0
+      @prev_count = 0
+      @ignored_count = 0
+    end
+
     def tag_file(rfile)
       og_text = File.read(rfile)
       tagged_text = tag_text(og_text, File.extname(rfile))
