@@ -18,6 +18,16 @@ describe SGETagger do
   end
 
   describe "#tagged?(text)" do
+    it 'true for tagged text' do
+      text = SGETagger::LEGAL_INFO
+      SGETagger.tagged?(text).should be_true
+    end
+
+    it 'false for untagged text' do
+      text = 'untagged text'
+      SGETagger.tagged?(text).should be_false
+    end
+
     it 'ignores newlines' do
       text = SGETagger::LEGAL_INFO.gsub("\n", '')
       SGETagger.tagged?(text).should be_true
