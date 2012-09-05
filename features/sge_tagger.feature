@@ -131,3 +131,9 @@ Feature: Tag SGE owned files
     """
     When I successfully run `sge_tagger --output-file sge-out.txt --force tmp`
     Then the file "sge-out.txt" should contain "newly tagged"
+
+  Scenario: catch errors when specifying bad output file name with --output-file --FILE options
+    Given a directory named "tmp"
+    When I run `sge_tagger --output-file --chatty tmp`
+    Then the exit status should not be 0
+    And the stderr should contain "is a bad file name"

@@ -58,6 +58,11 @@ module SGETagger
       text.include?(LEGAL_INFO.gsub("\n", ''))
     end
 
+    # prevent users from mixing up flags with filenames
+    def self.valid_filename?(file)
+      file.index('-') != 0 && file.index('--') != 0
+    end
+
     private
 
     def output(message)

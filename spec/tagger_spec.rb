@@ -52,4 +52,18 @@ describe Tagger do
       Tagger.tagged?(text).should be_true
     end
   end
+
+  describe "#valid_filename?" do
+    it 'true if not starting with - or --' do
+      Tagger.valid_filename?('file.txt').should be_true
+    end
+
+    it 'false if starts with -' do
+      Tagger.valid_filename?('-file').should be_false
+    end
+    
+    it 'false if starts with --' do
+      Tagger.valid_filename?('--file').should be_false
+    end
+  end
 end

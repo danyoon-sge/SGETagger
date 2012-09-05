@@ -30,6 +30,8 @@ class App
 
   def self.output_file(tagger)
     if output_file = options[:'output-file']
+      check_filename(output_file)
+
       # change to correct dir
       Dir.chdir '..' do
         if File.exists?(output_file) && !options[:force]
@@ -53,6 +55,14 @@ class App
       msg = "Warning: Previous output file '#{output_file}' was overwritten\n"
       msg << "because of the --force option."
       info msg
+    end
+  end
+
+  def self.check_filename(output_file)
+    if !Tagger.valid_filename?(output_file)
+      msg = "Error: Aborting since '#{output_file}' is a bad file name\n"
+      msg << "Output file names must not start with - or --"
+      exit_now!(msg)
     end
   end
 
