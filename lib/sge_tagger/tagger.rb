@@ -1,6 +1,7 @@
 module SGETagger
   class Tagger
     attr_reader :new_count, :prev_count, :ignored_count
+
     def tag_file(rfile)
       og_text = File.read(rfile)
       tagged_text = tag_text(og_text, File.extname(rfile))
@@ -30,18 +31,6 @@ module SGETagger
     def self.tagged?(text)
       text.gsub!("\n", '')
       text.include?(LEGAL_INFO.gsub("\n", ''))
-    end
-
-    def self.new_count
-      @new_count || 0
-    end
-
-    def self.prev_count
-      @prev_count || 0
-    end
-
-    def self.ignored_count
-      @ignored_count || 0
     end
   end
 end

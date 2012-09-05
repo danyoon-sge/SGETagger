@@ -35,33 +35,4 @@ describe SGETagger do
       SGETagger::Tagger.tagged?(text).should be_true
     end
   end
-
-=begin
-  describe "#new_count" do
-    it 'return 0 when empty' do
-      SGETagger.new_count.should == 0
-    end
-  end
-
-  describe "#prev_count" do
-    it 'return 0 when empty' do
-      SGETagger.prev_count.should == 0
-    end
-  end
-
-  describe "#ignored_count" do
-    it 'return 0 when empty' do
-      SGETagger.ignored_count.should == 0
-    end
-  end
-
-  describe "#inc_new_count" do
-    it 'increments new_count' do
-      pending
-      count = SGETagger.new_count
-      SGETagger.inc_new_count
-      count.next.should == SGETagger.new_count
-    end
-  end
-=end
 end
