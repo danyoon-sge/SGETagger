@@ -19,7 +19,7 @@ Feature: Tag SGE owned files
   Scenario: tags untagged text file
     Given a file named "tmp/sge_owned.txt" with:
     """
-    owned by SGE
+    owned by SGE .txt file
     """
     When I successfully run `sge_tagger tmp`
     Then the file "tmp/sge_owned.txt" should be text-tagged
@@ -27,7 +27,7 @@ Feature: Tag SGE owned files
   Scenario: tags untagged ruby file
     Given a file named "tmp/sge_owned.rb" with:
     """
-    owned by SGE
+    owned by SGE .rb file
     """
     When I successfully run `sge_tagger tmp`
     Then the file "tmp/sge_owned.rb" should be ruby-tagged
