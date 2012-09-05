@@ -17,8 +17,8 @@ class App
       tagger.tag_file(rfile)
     end
 
-    output_summary(tagger)
     output_file(tagger)
+    output_summary(tagger)
   end
 
   # supplemental methods
