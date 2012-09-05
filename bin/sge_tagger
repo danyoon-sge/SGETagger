@@ -13,7 +13,7 @@ class App
   main do |file_dir|
     tagger = Tagger.new
 
-    Tagger.taggable_files(file_dir) do |rfile|
+    Tagger.taggable_files(file_dir).each do |rfile|
       tagger.tag_file(rfile)
     end
 

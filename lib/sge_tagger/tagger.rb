@@ -13,11 +13,8 @@ module SGETagger
     end
 
     def self.taggable_files(file_dir)
-      Dir.chdir(file_dir) do
-        Dir["**/*"].each do |rfile|
-          yield rfile if block_given?
-        end
-      end
+      Dir.chdir(file_dir)
+      Dir["**/*"]
     end
 
     def tag_file(rfile)

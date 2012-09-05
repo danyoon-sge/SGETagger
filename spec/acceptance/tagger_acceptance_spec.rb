@@ -17,10 +17,5 @@ describe Tagger do
   end
 
   describe "#taggable_files" do
-    it 'handles no block given' do
-      expect do
-        Tagger.taggable_files('tmp')
-      end.to_not raise_error
-    end
   end
 end
