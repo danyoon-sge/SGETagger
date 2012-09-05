@@ -29,15 +29,15 @@ class App
   end
 
   def self.output_file(tagger)
-    if output_file = options['output-file']
+    if output_file = options[:'output-file']
       # change to correct dir
       Dir.chdir '..' do
-        if !File.exists?(output_file) || options['force']
+        if !File.exists?(output_file) || options[:force]
           File.open(output_file, 'w') do |file|
             file << tagger.report
           end
 
-          if options['force']
+          if options[:force]
             msg = "Warning: Previous output file '#{output_file}' was overwritten\n"
             msg << "because of the --force option."
             info msg
