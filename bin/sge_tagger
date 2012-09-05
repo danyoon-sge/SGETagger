@@ -10,8 +10,10 @@ class App
   include Methadone::SH
 
   main do |file_dir|
+    tagger = SGETagger::Tagger.new
+
     taggable_files(file_dir) do |rfile|
-      SGETagger.tag_file(rfile)
+      tagger.tag_file(rfile)
     end
   end
 
