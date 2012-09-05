@@ -4,6 +4,10 @@ require "sge_tagger/version"
 require 'pry'
 
 module SGETagger
+  class << self
+    attr_reader :new_count, :prev_count, :ignored_count
+  end
+
   LEGAL_INFO = <<-EOS
 Confidential information of Sleepy Giant Entertainment, Inc.
 © Sleepy Giant Entertainment, Inc.
@@ -38,5 +42,17 @@ Confidential information of Sleepy Giant Entertainment, Inc.
   def self.tagged?(text)
     text.gsub!("\n", '')
     text.include?(LEGAL_INFO.gsub("\n", ''))
+  end
+
+  def self.new_count
+    @new_count || 0
+  end
+
+  def self.prev_count
+    @prev_count || 0
+  end
+
+  def self.ignored_count
+    @ignored_count || 0
   end
 end

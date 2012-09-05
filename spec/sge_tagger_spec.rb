@@ -33,4 +33,22 @@ describe SGETagger do
       SGETagger.tagged?(text).should be_true
     end
   end
+
+  describe "#new_count" do
+    it 'return 0 when empty' do
+      SGETagger.new_count.should == 0
+    end
+  end
+
+  describe "#prev_count" do
+    it 'return 0 when empty' do
+      SGETagger.prev_count.should == 0
+    end
+  end
+
+  describe "#ignored_count" do
+    it 'return 0 when empty' do
+      SGETagger.ignored_count.should == 0
+    end
+  end
 end
