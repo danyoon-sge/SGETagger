@@ -13,9 +13,13 @@ module SGETagger
       tagged_text = tag_text(og_text, File.extname(rfile))
 
       if og_text != tagged_text
+        @new_count += 1
+
         File.open(rfile, 'w') do |wfile|
           wfile.puts tagged_text
         end
+      else
+        @prev_count += 1
       end
     end
     

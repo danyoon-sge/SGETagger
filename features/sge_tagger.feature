@@ -40,3 +40,32 @@ Feature: Tag SGE owned files
     """
     When I successfully run `sge_tagger tmp`
     Then the file "tmp/sge_tagged.txt" should only be tagged once
+
+  Scenario: show report after successful run
+    Given a file named "tmp/sge_tagged.txt" with:
+    """
+    SGE owned .txt file
+    """
+    When I successfully run `sge_tagger tmp`
+    Then the output should contain "newly"
+    And the output should contain "previously"
+    And the output should contain "3rd party"
+
+  Scenario: show newly tagged count after successful run
+    Given a file named "tmp/sge_tagged.txt" with:
+    """
+    SGE owned .txt file
+    """
+    When I successfully run `sge_tagger tmp`
+    Then the output should contain "1 newly"
+    And the output should contain "0 previously"
+
+  Scenario: show previously tagged count after successful run
+    Given a file named "tmp/sge_tagged.txt" with:
+    """
+    Confidential information of Sleepy Giant Entertainment, Inc.
+    © Sleepy Giant Entertainment, Inc.
+    """
+    When I successfully run `sge_tagger tmp`
+    Then the output should contain "0 newly"
+    And the output should contain "1 previously"
