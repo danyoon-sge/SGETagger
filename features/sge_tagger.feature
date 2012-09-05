@@ -31,3 +31,12 @@ Feature: Tag SGE owned files
     """
     When I successfully run `sge_tagger tmp`
     Then the file "tmp/sge_owned.rb" should be ruby-tagged
+
+  Scenario: does not tag already tagged text file
+    Given a file named "tmp/sge_tagged.txt" with:
+    """
+    Confidential information of Sleepy Giant Entertainment, Inc.
+    © Sleepy Giant Entertainment, Inc.
+    """
+    When I successfully run `sge_tagger tmp`
+    Then the file "tmp/sge_tagged.txt" should only be tagged once
