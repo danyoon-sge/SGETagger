@@ -6,6 +6,7 @@ require './features/support/steps_helper'
 
 ENV['PATH'] = "#{File.expand_path(File.dirname(__FILE__) + '/../../bin')}#{File::PATH_SEPARATOR}#{ENV['PATH']}"
 LIB_DIR = File.join(File.expand_path(File.dirname(__FILE__)),'..','..','lib')
+ARUBA_DIR = 'tmp/aruba'
 
 Before do
   # Using "announce" causes massive warnings on 1.9.2
