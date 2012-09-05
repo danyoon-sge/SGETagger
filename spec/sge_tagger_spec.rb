@@ -16,4 +16,11 @@ describe SGETagger do
       og_text.object_id.should_not == tagged_text.object_id
     end
   end
+
+  describe "#tagged?(text)" do
+    it 'ignores newlines' do
+      text = SGETagger::LEGAL_INFO.gsub("\n", '')
+      SGETagger.tagged?(text).should be_true
+    end
+  end
 end

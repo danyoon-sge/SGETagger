@@ -21,7 +21,7 @@ Confidential information of Sleepy Giant Entertainment, Inc.
   end
 
   def self.tag_text(og_text, file_type)
-    return og_text.clone if og_text.include?(LEGAL_INFO)
+    return og_text.clone if SGETagger.tagged?(og_text)
 
     tagged_text = LEGAL_INFO.clone
 
@@ -33,5 +33,10 @@ Confidential information of Sleepy Giant Entertainment, Inc.
 
     tagged_text << og_text
     tagged_text
+  end
+
+  def self.tagged?(text)
+    text.gsub!("\n", '')
+    text.include?(LEGAL_INFO.gsub("\n", ''))
   end
 end
