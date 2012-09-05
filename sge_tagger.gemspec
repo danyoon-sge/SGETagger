@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.name          = "sge_tagger"
   gem.version       = SGETagger::VERSION
   gem.authors       = ["Daniel"]
-  gem.email         = ["robotright@gmail.com"]
+  gem.email         = ["daniel.yoon@sleepygiant.com"]
   gem.description   = %q{TODO: Write a gem description}
   gem.summary       = %q{TODO: Write a gem summary}
   gem.homepage      = ""
