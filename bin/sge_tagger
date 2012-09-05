@@ -32,23 +32,27 @@ class App
     if output_file = options[:'output-file']
       # change to correct dir
       Dir.chdir '..' do
-        if !File.exists?(output_file) || options[:force]
-          File.open(output_file, 'w') do |file|
-            file << tagger.report
-          end
-
-          if options[:force]
-            msg = "Warning: Previous output file '#{output_file}' was overwritten\n"
-            msg << "because of the --force option."
-            info msg
-          end
-        else
+        if File.exists?(output_file) && !options[:force]
           msg = "Warning: No output file created since '#{output_file}' would\n"
           msg << "have been overwritten. Use the --force option to overwrite\n"
           msg << "existing output files."
           info msg
+        else
+          File.open(output_file, 'w') do |file|
+            file << tagger.report
+          end
+
+          output_force_message(output_file)
         end
       end
+    end
+  end
+
+  def self.output_force_message(output_file)
+    if options[:force]
+      msg = "Warning: Previous output file '#{output_file}' was overwritten\n"
+      msg << "because of the --force option."
+      info msg
     end
   end
 
