@@ -16,6 +16,7 @@ Feature: Tag SGE owned files
       |-c|
       |--output-file|
       |-o|
+      |--force|
       |--log-level|
     And the banner should document that this app's arguments are:
       | file_dir | which is required |
@@ -106,3 +107,27 @@ Feature: Tag SGE owned files
     """
     When I successfully run `sge_tagger --output-file sge-out.txt tmp`
     Then the file "sge-out.txt" should contain "sge.txt - newly tagged"
+
+  Scenario: do not clobber existing output file when run with --output-file FILE option
+    Given a file named "tmp/sge.txt" with:
+    """
+    SGE owned .txt file
+    """
+    And a file named "sge-out.txt" with:
+    """
+    existing output file
+    """
+    When I successfully run `sge_tagger --output-file sge-out.txt tmp`
+    Then the file "sge-out.txt" should contain "existing output file"
+
+  Scenario: clobber existing output file when run with --output-file FILE --force options
+    Given a file named "tmp/sge.txt" with:
+    """
+    SGE owned .txt file
+    """
+    And a file named "sge-out.txt" with:
+    """
+    existing output file
+    """
+    When I successfully run `sge_tagger --output-file sge-out.txt --force tmp`
+    Then the file "sge-out.txt" should contain "newly tagged"

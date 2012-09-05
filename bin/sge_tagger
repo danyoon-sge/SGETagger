@@ -32,8 +32,21 @@ class App
     if output_file = options['output-file']
       # change to correct dir
       Dir.chdir '..' do
-        File.open(output_file, 'w') do |file|
-          file << tagger.report
+        if !File.exists?(output_file) || options['force']
+          File.open(output_file, 'w') do |file|
+            file << tagger.report
+          end
+
+          if options['force']
+            msg = "Warning: Previous output file '#{output_file}' was overwritten\n"
+            msg << "because of the --force option."
+            info msg
+          end
+        else
+          msg = "Warning: No output file created since '#{output_file}' would\n"
+          msg << "have been overwritten. Use the --force option to overwrite\n"
+          msg << "existing output files."
+          info msg
         end
       end
     end
@@ -47,6 +60,7 @@ class App
   on("-c", "--chatty", "Log messages to standard output")
   on("-n", "--dry-run", "Do a dry run without executing actions")
   on("-o FILE", "--output-file", "Log messages to specified file")
+  on("--force", "Clobber any existing output files")
 
   # Require an argument
   arg :file_dir, "Directory containing files to tag with legal info"
