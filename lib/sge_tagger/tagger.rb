@@ -4,9 +4,10 @@ module SGETagger
     include Methadone::CLILogging
     include Methadone::SH
 
-    attr_reader :new_count, :prev_count, :ignored_count
+    attr_reader :new_count, :prev_count, :ignored_count, :options
 
-    def initialize
+    def initialize(options)
+      @options = options
       @new_count = 0
       @prev_count = 0
       @ignored_count = 0
@@ -22,13 +23,15 @@ module SGETagger
       tagged_text = tag_text(og_text, File.extname(rfile))
 
       if og_text != tagged_text
-        @new_count += 1
-
         File.open(rfile, 'w') do |wfile|
           wfile.puts tagged_text
         end
+
+        @new_count += 1
+        output("#{rfile} - newly tagged")
       else
         @prev_count += 1
+        output("#{rfile} - previously tagged")
       end
     end
     
@@ -50,6 +53,16 @@ module SGETagger
     def self.tagged?(text)
       text.gsub!("\n", '')
       text.include?(LEGAL_INFO.gsub("\n", ''))
+    end
+
+    private
+
+    def output(message)
+      if @options[:chatty]
+        info message
+      else
+        debug message
+      end
     end
   end
 end

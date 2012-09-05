@@ -12,6 +12,8 @@ Feature: Tag SGE owned files
     And the banner should document that this app takes options
     And the following options should be documented:
       |--version|
+      |--chatty|
+      |-c|
       |--log-level|
     And the banner should document that this app's arguments are:
       | file_dir | which is required |

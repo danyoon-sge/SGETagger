@@ -11,7 +11,7 @@ class App
   include SGETagger
 
   main do |file_dir|
-    tagger = Tagger.new
+    tagger = Tagger.new(options)
 
     Tagger.taggable_files(file_dir).each do |rfile|
       tagger.tag_file(rfile)
@@ -30,17 +30,10 @@ class App
   # Declare command-line interface here
 
   description "Tag SGE owned files with legal info"
-  #
-  # Accept flags via:
-  # on("--flag VAL","Some flag")
-  # options[flag] will contain VAL
-  #
-  # Specify switches via:
-  # on("--[no-]switch","Some switch")
-  #
-  # Or, just call OptionParser methods on opts
-  #
- 
+
+  # Accept flags
+  on("-c", "--chatty", "Log messages to standard output")
+
   # Require an argument
   arg :file_dir, "Directory containing files to tag with legal info"
 

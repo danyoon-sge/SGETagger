@@ -4,7 +4,7 @@ include SGETagger
 
 describe Tagger do
   describe ".tag_text(og_text, file_type)" do
-    let(:tagger) { Tagger.new }
+    let(:tagger) { Tagger.new({}) }
 
     context 'untagged file' do
       it 'tags file' do
