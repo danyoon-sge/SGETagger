@@ -32,8 +32,8 @@ describe Tagger do
         it 'includes files in nested dir' do
           # add folder one level down
           file = File.join(TEMP_DIR, DIR1)
-          file = File.join(file, "sge_inside_folder.txt")
-          File.open(file, 'w+') { |f| f << "sge inside folder" }
+          file = File.join(file, "inner_file.txt")
+          File.open(file, 'w+') { |f| f << "inner file" }
 
           tf = Tagger.taggable_files(TEMP_DIR)
           tf.count.should == 2
@@ -55,7 +55,7 @@ describe Tagger do
       context 'file nested in a dir' do
         it 'includes files in nested dir' do
           # add folder one level down
-          file = File.join(TEMP_DIR, "level_one")
+          file = File.join(TEMP_DIR, DIR1)
           file = File.join(file, "sge_inside_folder.txt")
           File.open(file, 'w+') { |f| f << "sge inside folder" }
 
