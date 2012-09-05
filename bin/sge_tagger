@@ -8,11 +8,12 @@ class App
   include Methadone::Main
   include Methadone::CLILogging
   include Methadone::SH
+  include SGETagger
 
   main do |file_dir|
-    tagger = SGETagger::Tagger.new
+    tagger = Tagger.new
 
-    SGETagger::Tagger.taggable_files(file_dir) do |rfile|
+    Tagger.taggable_files(file_dir) do |rfile|
       tagger.tag_file(rfile)
     end
 
