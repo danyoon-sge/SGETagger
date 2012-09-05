@@ -80,3 +80,11 @@ Feature: Tag SGE owned files
     """
     When I successfully run `sge_tagger tmp`
     Then the file "tmp/sge.txt" should be text-tagged
+
+  Scenario: show output when run with --chatty option
+    Given a file named "tmp/sge.txt" with:
+    """
+    SGE owned .txt file
+    """
+    When I successfully run `sge_tagger --chatty tmp`
+    Then the output should contain "sge.txt - newly tagged"
