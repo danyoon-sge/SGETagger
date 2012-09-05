@@ -17,5 +17,9 @@ describe Tagger do
   end
 
   describe "#taggable_files" do
+    it 'does not count directories' do
+      tf = Tagger.taggable_files('tmp')
+      tf.count.should == 1
+    end
   end
 end

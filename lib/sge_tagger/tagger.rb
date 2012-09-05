@@ -14,7 +14,7 @@ module SGETagger
 
     def self.taggable_files(file_dir)
       Dir.chdir(file_dir)
-      Dir["**/*"]
+      Dir["**/*"].delete_if { |fname| File.directory?(fname) }
     end
 
     def tag_file(rfile)

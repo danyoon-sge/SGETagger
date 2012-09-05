@@ -69,3 +69,12 @@ Feature: Tag SGE owned files
     When I successfully run `sge_tagger tmp`
     Then the output should contain "0 newly"
     And the output should contain "1 previously"
+
+  Scenario: tag files and ignore directories
+    Given a directory named "tmp/level_one"
+    And a file named "tmp/sge_tagged.txt" with:
+    """
+    SGE owned .txt file
+    """
+    When I successfully run `sge_tagger tmp`
+    Then the file "tmp/sge_tagged.txt" should be text-tagged
