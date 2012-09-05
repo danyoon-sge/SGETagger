@@ -1,7 +1,7 @@
 require 'sge_tagger'
 
 describe SGETagger::Tagger do
-  describe "#tag_text(og_text, file_type)" do
+  describe ".tag_text(og_text, file_type)" do
     let(:tagger) { SGETagger::Tagger.new }
 
     context 'untagged file' do
