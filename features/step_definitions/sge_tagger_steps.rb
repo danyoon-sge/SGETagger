@@ -25,3 +25,11 @@ Then /^the file "(.*?)" should only be tagged once$/ do |file_dir|
     text.scan(SGETagger::LEGAL_INFO.gsub("\n", '')).count.should == 1
   end
 end
+
+Then /^the file "(.*?)" should be unchanged$/ do |file_dir|
+  in_aruba_dir(file_dir) do
+    filename = File.basename(file_dir)
+    text = File.read(filename)
+    text.include?(SGETagger::LEGAL_INFO).should be_false
+  end
+end

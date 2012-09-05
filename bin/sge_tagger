@@ -33,6 +33,7 @@ class App
 
   # Accept flags
   on("-c", "--chatty", "Log messages to standard output")
+  on("-n", "--dry-run", "Do a dry run without executing actions")
 
   # Require an argument
   arg :file_dir, "Directory containing files to tag with legal info"

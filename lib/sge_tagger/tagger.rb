@@ -23,8 +23,10 @@ module SGETagger
       tagged_text = tag_text(og_text, File.extname(rfile))
 
       if og_text != tagged_text
-        File.open(rfile, 'w') do |wfile|
-          wfile.puts tagged_text
+        if !@options['dry-run']
+          File.open(rfile, 'w') do |wfile|
+            wfile.puts tagged_text
+          end
         end
 
         @new_count += 1
