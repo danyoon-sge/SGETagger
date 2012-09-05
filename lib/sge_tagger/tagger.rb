@@ -1,5 +1,9 @@
 module SGETagger
   class Tagger
+    include Methadone::Main
+    include Methadone::CLILogging
+    include Methadone::SH
+
     attr_reader :new_count, :prev_count, :ignored_count
 
     def initialize
