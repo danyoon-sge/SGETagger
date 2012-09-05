@@ -13,8 +13,10 @@ Confidential information of Sleepy Giant Entertainment, Inc.
     og_text = File.read(rfile)
     tagged_text = tag_text(og_text, File.extname(rfile))
 
-    File.open(rfile, 'w') do |wfile|
-      wfile.puts tagged_text
+    if og_text != tagged_text
+      File.open(rfile, 'w') do |wfile|
+        wfile.puts tagged_text
+      end
     end
   end
 
