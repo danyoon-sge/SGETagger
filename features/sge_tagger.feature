@@ -19,32 +19,32 @@ Feature: Tag SGE owned files
       | file_dir | which is required |
 
   Scenario: tags untagged text file
-    Given a file named "tmp/sge_owned.txt" with:
+    Given a file named "tmp/sge.txt" with:
     """
     owned by SGE .txt file
     """
     When I successfully run `sge_tagger tmp`
-    Then the file "tmp/sge_owned.txt" should be text-tagged
+    Then the file "tmp/sge.txt" should be text-tagged
 
   Scenario: tags untagged ruby file
-    Given a file named "tmp/sge_owned.rb" with:
+    Given a file named "tmp/sge.rb" with:
     """
     owned by SGE .rb file
     """
     When I successfully run `sge_tagger tmp`
-    Then the file "tmp/sge_owned.rb" should be ruby-tagged
+    Then the file "tmp/sge.rb" should be ruby-tagged
 
   Scenario: does not tag already tagged text file
-    Given a file named "tmp/sge_tagged.txt" with:
+    Given a file named "tmp/sge.txt" with:
     """
     Confidential information of Sleepy Giant Entertainment, Inc.
     © Sleepy Giant Entertainment, Inc.
     """
     When I successfully run `sge_tagger tmp`
-    Then the file "tmp/sge_tagged.txt" should only be tagged once
+    Then the file "tmp/sge.txt" should only be tagged once
 
   Scenario: show report after successful run
-    Given a file named "tmp/sge_tagged.txt" with:
+    Given a file named "tmp/sge.txt" with:
     """
     SGE owned .txt file
     """
@@ -54,7 +54,7 @@ Feature: Tag SGE owned files
     And the output should contain "3rd party"
 
   Scenario: show newly tagged count after successful run
-    Given a file named "tmp/sge_tagged.txt" with:
+    Given a file named "tmp/sge.txt" with:
     """
     SGE owned .txt file
     """
@@ -63,7 +63,7 @@ Feature: Tag SGE owned files
     And the output should contain "0 previously"
 
   Scenario: show previously tagged count after successful run
-    Given a file named "tmp/sge_tagged.txt" with:
+    Given a file named "tmp/sge.txt" with:
     """
     Confidential information of Sleepy Giant Entertainment, Inc.
     © Sleepy Giant Entertainment, Inc.
@@ -74,9 +74,9 @@ Feature: Tag SGE owned files
 
   Scenario: tag files and ignore directories
     Given a directory named "tmp/level_one"
-    And a file named "tmp/sge_tagged.txt" with:
+    And a file named "tmp/sge.txt" with:
     """
     SGE owned .txt file
     """
     When I successfully run `sge_tagger tmp`
-    Then the file "tmp/sge_tagged.txt" should be text-tagged
+    Then the file "tmp/sge.txt" should be text-tagged
