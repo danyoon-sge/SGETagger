@@ -12,6 +12,14 @@ module SGETagger
       @ignored_count = 0
     end
 
+    def self.taggable_files(file_dir)
+      Dir.chdir(file_dir) do
+        Dir["**/*"].each do |rfile|
+          yield rfile
+        end
+      end
+    end
+
     def tag_file(rfile)
       og_text = File.read(rfile)
       tagged_text = tag_text(og_text, File.extname(rfile))

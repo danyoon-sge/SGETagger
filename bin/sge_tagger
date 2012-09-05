@@ -12,7 +12,7 @@ class App
   main do |file_dir|
     tagger = SGETagger::Tagger.new
 
-    taggable_files(file_dir) do |rfile|
+    SGETagger::Tagger.taggable_files(file_dir) do |rfile|
       tagger.tag_file(rfile)
     end
 
@@ -20,14 +20,6 @@ class App
   end
 
   # supplemental methods
-  def self.taggable_files(file_dir)
-    Dir.chdir(file_dir) do
-      Dir["**/*"].each do |rfile|
-        yield rfile
-      end
-    end
-  end
-
   def self.output_summary(tagger)
     info "#{tagger.new_count} newly tagged files"
     info "#{tagger.prev_count} previously tagged files"
