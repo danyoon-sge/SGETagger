@@ -18,6 +18,7 @@ class App
     end
 
     output_summary(tagger)
+    output_file(tagger)
   end
 
   # supplemental methods
@@ -27,6 +28,17 @@ class App
     info "#{tagger.ignored_count} 3rd party files ignored"
   end
 
+  def self.output_file(tagger)
+    if output_file = options['output-file']
+      # change to correct dir
+      Dir.chdir '..' do
+        File.open(output_file, 'w') do |file|
+          file << tagger.report
+        end
+      end
+    end
+  end
+
   # Declare command-line interface here
 
   description "Tag SGE owned files with legal info"
@@ -34,6 +46,7 @@ class App
   # Accept flags
   on("-c", "--chatty", "Log messages to standard output")
   on("-n", "--dry-run", "Do a dry run without executing actions")
+  on("-o FILE", "--output-file", "Log messages to specified file")
 
   # Require an argument
   arg :file_dir, "Directory containing files to tag with legal info"

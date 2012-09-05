@@ -4,13 +4,14 @@ module SGETagger
     include Methadone::CLILogging
     include Methadone::SH
 
-    attr_reader :new_count, :prev_count, :ignored_count, :options
+    attr_reader :new_count, :prev_count, :ignored_count, :options, :report
 
     def initialize(options)
       @options = options
       @new_count = 0
       @prev_count = 0
       @ignored_count = 0
+      @report = ''
     end
 
     def self.taggable_files(file_dir)
@@ -65,6 +66,8 @@ module SGETagger
       else
         debug message
       end
+
+      @report << message << "\n"
     end
   end
 end
