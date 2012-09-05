@@ -1,6 +1,6 @@
 require 'sge_tagger'
 
-describe SGETagger do
+describe SGETagger::Tagger do
   describe "#tag_text(og_text, file_type)" do
     let(:tagger) { SGETagger::Tagger.new }
 
